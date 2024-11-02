@@ -26,7 +26,7 @@ export class HeroListComponent {
   }
 
   addHero() {
-    superHeros.push(
+    this.superHeroList.push(
       {
         "id": 2,
         "name": "Batman",
