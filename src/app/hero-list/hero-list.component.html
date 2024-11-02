@@ -1,0 +1,17 @@
+<app-search (searchOutput)="onSearchOutput($event)"></app-search>
+<div class="flex gap-6 flex-wrap justify-center">
+  @for (superhero of filteredList; track superhero) {
+    <div class="card bg-base-100 w-96 shadow-xl">
+      <figure>
+        <img [ngSrc]="superhero.images.sm" width="200" height="200"/>
+      </figure>
+      <div class="card-body">
+        <h2 class="card-title">{{ superhero.name }}</h2>
+        <p class="w-80 overflow-clip">{{ superhero.biography.firstAppearance }}</p>
+        <div class="card-actions justify-end">
+          <button class="btn btn-primary" routerLink="/hero/{{superhero.id}}">Edit</button>
+        </div>
+      </div>
+    </div>
+  }
+</div>

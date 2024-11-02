@@ -1,0 +1,39 @@
+<div class="flex gap-16 justify-center pt-10">
+  <div class="flex flex-col items-center justify-center">
+    <div class="radial-progress text-primary" style="--value:{{heroPower?.combat}};"
+         role="progressbar">{{ heroPower?.combat }}%
+    </div>
+    <h2 class="card-title text-primary">Combat</h2>
+  </div>
+
+  <div class="flex flex-col items-center justify-center">
+    <div class="radial-progress text-accent" style="--value:{{heroPower?.durability}};"
+         role="progressbar">{{ heroPower?.durability }}%
+    </div>
+    <h2 class="card-title text-accent">Durability</h2>
+  </div>
+  <div class="flex flex-col items-center justify-center">
+    <div class="radial-progress text-secondary" style="--value:{{heroPower?.intelligence}};"
+         role="progressbar">{{ heroPower?.intelligence }}%
+    </div>
+    <h2 class="card-title text-secondary">Intelligence</h2>
+  </div>
+  <div class="flex flex-col items-center justify-center">
+    <div class="radial-progress text-success" style="--value:{{heroPower?.power}};"
+         role="progressbar">{{ heroPower?.power }}%
+    </div>
+    <h2 class="card-title text-success">Power</h2>
+  </div>
+  <div class="flex flex-col items-center justify-center">
+    <div class="radial-progress text-warning" style="--value:{{heroPower?.speed}};"
+         role="progressbar">{{ heroPower?.speed }}%
+    </div>
+    <h2 class="card-title text-warning">Speed</h2>
+  </div>
+  <div class="flex flex-col items-center justify-center">
+    <div class="radial-progress text-error" style="--value:{{heroPower?.strength}};"
+         role="progressbar">{{ heroPower?.strength }}%
+    </div>
+    <h2 class="card-title text-error">Strength</h2>
+  </div>
+</div>

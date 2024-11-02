@@ -1,0 +1,73 @@
+<div class="card card-side bg-base-100 shadow-xl">
+  <figure>
+    @if (selectedHero) {
+      <img [ngSrc]="selectedHero.images.lg" width="1000" height="500"/>
+    }
+  </figure>
+  <div class="card-body">
+    <div class="flex gap-3 items-center justify-between">
+      <div class="flex gap-3 items-center">
+        @if (selectedHero) {
+          <img [ngSrc]="getLogo()" height="64" width="64"/>
+          <p class="font-bold text-3xl">{{ selectedHero.name }}</p>
+        }
+      </div>
+      <div class="flex gap-3 items-center">
+        @if (this.heroID !== 1) {
+          <button class="btn btn-circle" (click)="onPreviousClick()">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                 stroke="currentColor"
+                 class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M21 16.811c0 .864-.933 1.406-1.683.977l-7.108-4.061a1.125 1.125 0 0 1 0-1.954l7.108-4.061A1.125 1.125 0 0 1 21 8.689v8.122ZM11.25 16.811c0 .864-.933 1.406-1.683.977l-7.108-4.061a1.125 1.125 0 0 1 0-1.954l7.108-4.061a1.125 1.125 0 0 1 1.683.977v8.122Z"/>
+            </svg>
+
+          </button>
+        }
+        @if (this.heroID !== maxId) {
+          <button class="btn btn-circle" (click)="onNextClick()">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                 stroke="currentColor"
+                 class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M3 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061A1.125 1.125 0 0 1 3 16.811V8.69ZM12.75 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061a1.125 1.125 0 0 1-1.683-.977V8.69Z"/>
+            </svg>
+          </button>
+        }
+        <button class="btn btn-circle" routerLink="">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+    @if (selectedHero) {
+      <div>
+        <div class="badge" [ngClass]="getBadgeClass()">
+          {{ selectedHero.biography.alignment | titlecase }}
+        </div>
+      </div>
+      <h2 class="card-title">Real Name: <p class="font-normal text-lg">{{ selectedHero.biography.fullName }}</p></h2>
+      <h2 class="card-title">Occupation: <p class="font-normal text-lg">{{ selectedHero.work.occupation }}</p></h2>
+      <h2 class="card-title">Place Of Birth: <p
+        class="font-normal text-lg">{{ selectedHero.biography.placeOfBirth }}</p>
+      </h2>
+      <h2 class="card-title">Known Relatives: <p
+        class="font-normal text-lg">{{ selectedHero.connections.relatives }}</p>
+      </h2>
+      <h2 class="card-title">First Appearance: <p
+        class="font-normal text-lg">{{ selectedHero.biography.firstAppearance }}</p></h2>
+      <app-power [heroPower]="selectedHero.powerstats"></app-power>
+    }
+  </div>
+</div>
