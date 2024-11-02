@@ -1,9 +1,10 @@
-import {Component, computed, signal, viewChild} from '@angular/core';
+import {Component, computed, inject, signal, viewChild} from '@angular/core';
 import {superHeros} from "../superheros";
 import {SearchComponent} from "./search/search.component";
 import {JsonPipe, NgOptimizedImage} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {SuperHeroModel} from "../models/super-hero.model";
+import {SuperHeroStore} from "../store/super-hero.store";
 
 @Component({
   selector: 'app-hero-list',
@@ -18,19 +19,9 @@ import {SuperHeroModel} from "../models/super-hero.model";
   styleUrl: './hero-list.component.css'
 })
 export class HeroListComponent {
-  superHeroList = signal<SuperHeroModel[]>(superHeros);
-  filter = signal<string>('');
-  filteredList = computed(() => {
-    return this.superHeroList().filter(x => x.name.toLowerCase().indexOf(this.filter().toLowerCase()) > -1);
-  });
-  heroesNumber = computed(() => {
-    return this.superHeroList().length;
-  });
+  superHeroStore = inject(SuperHeroStore);
 
-  onSearchOutput(searchString: string): void {
-    this.filter.set(searchString);
-  }
-
+  // Step 5 Remove
   addHero() {
     const batMan = {
       "id": 2,
@@ -77,9 +68,7 @@ export class HeroListComponent {
       }
 
     }
-    this.superHeroList.update(values => {
-      return [...values, batMan];
-    });
+    this.superHeroStore.addHero(batMan);
   }
 
 }

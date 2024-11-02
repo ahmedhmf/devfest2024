@@ -1,4 +1,5 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, inject, Output} from '@angular/core';
+import {SuperHeroStore} from "../../store/super-hero.store";
 
 @Component({
   selector: 'app-search',
@@ -8,9 +9,9 @@ import {Component, EventEmitter, Output} from '@angular/core';
   styleUrl: './search.component.css'
 })
 export class SearchComponent {
-  @Output() searchOutput = new EventEmitter<string>();
+  superHeroStore = inject(SuperHeroStore);
 
   onSearchUpdated(value: string) {
-    this.searchOutput.emit(value);
+    this.superHeroStore.updateFilter(value);
   }
 }
