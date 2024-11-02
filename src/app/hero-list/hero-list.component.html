@@ -1,10 +1,10 @@
 <app-search (searchOutput)="onSearchOutput($event)"></app-search>
 <div class="flex justify-center py-10 gap-10">
-  <p class="text-3xl">Number of Superheroes {{herosNumber}}</p>
+  <p class="text-3xl">Number of Superheroes {{heroesNumber()}}</p>
   <button class="btn" (click)="addHero()">Add Batman</button>
 </div>
 <div class="flex gap-6 flex-wrap justify-center">
-  @for (superhero of filteredList; track superhero) {
+  @for (superhero of filteredList(); track superhero) {
     <div class="card bg-base-100 w-96 shadow-xl">
       <figure>
         <img [ngSrc]="superhero.images.sm" width="200" height="200"/>
