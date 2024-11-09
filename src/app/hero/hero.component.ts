@@ -23,6 +23,7 @@ export class HeroComponent {
   private router = inject(Router);
   heroID = Number(this.route.snapshot.paramMap.get('id'));
   selectedHero: SuperHeroModel = superHeros.filter(x => x.id === this.heroID)[0];
+  power = '';
   maxId = superHeros.reduce((acc, value) => {
     return (acc = acc > value.id ? acc : value.id);
   }, 0);
@@ -55,5 +56,9 @@ export class HeroComponent {
       return './marvel.png';
     }
     return 'DC_Comics.png';
+  }
+
+  showPower(event: string) {
+    this.power = event;
   }
 }

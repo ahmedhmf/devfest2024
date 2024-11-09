@@ -9,7 +9,7 @@
       <div class="flex gap-3 items-center">
         @if (selectedHero) {
           <img [ngSrc]="getLogo()" height="64" width="64"/>
-          <p class="font-bold text-3xl">{{ selectedHero.name }}</p>
+          <p class="font-bold text-3xl">{{ selectedHero.name }}     {{power}}</p>
         }
       </div>
       <div class="flex gap-3 items-center">
@@ -67,7 +67,7 @@
       </h2>
       <h2 class="card-title">First Appearance: <p
         class="font-normal text-lg">{{ selectedHero.biography.firstAppearance }}</p></h2>
-      <app-power [heroPower]="selectedHero.powerstats"></app-power>
+      <app-power [heroPower]="selectedHero.powerstats" (onPowerClick)="showPower($event)"></app-power>
     }
   </div>
 </div>

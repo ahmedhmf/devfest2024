@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {PowerModel} from "../../models/super-hero.model";
 
 @Component({
@@ -10,4 +10,9 @@ import {PowerModel} from "../../models/super-hero.model";
 })
 export class PowerComponent {
   @Input({required: true}) heroPower: PowerModel | undefined;
+  @Output() onPowerClick = new EventEmitter<string>();
+
+  powerClick(value: number | null | undefined) {
+    this.onPowerClick.emit(value?.toString());
+  }
 }
